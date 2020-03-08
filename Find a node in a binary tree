@@ -1,0 +1,15 @@
+//this algorithm can be used to find a node into a binary tree
+
+FUNCTION FindNode(SearchItem: DataType) RETURNS INTEGER //returns pointer
+  ThisNodePointer ← RootPointer //start at the root of the tree
+  WHILE ThisNodePointer < > NullPointer //while there is a pointer
+     AND Tree[ThisNodePointer].Data < > SearchItem //and item not found
+    IF Tree[ThisNodePointer].Data > SearchItem
+      THEN //follow the left pointer
+        ThisNodePointer ← Tree[ThisNodePointer].LeftPointer
+      ELSE //follow the right pointer
+        ThisNodePointer ← Tree[ThisNodePointer].RightPointer
+    ENDIF
+  ENDWHILE
+RETURN ThisNodePointer //return null pointer if item not found
+ENDFUNCTION
