@@ -1,0 +1,23 @@
+//this pseudocode algorithm is used to create a new binary tree 
+
+NullPointer should be set to -1 if using array element with index 0
+CONSTANT NullPointer = 0
+//Declare record type to store data and pointers
+TYPE TreeNode
+  DECLARE Data: <DataType>
+  DECLARE LeftPointer: INTEGER
+  DECLARE RightPointer: INTEGER
+ENDTYPE
+DECLARE RootPointer: INTEGER
+DECLARE FreePointer: INTEGER
+DECLARE Tree: ARRAY[1: N] OF TreeNode
+PROCEDURE InitialiseTree()
+  RootPointer ← NullPointer
+  FreePointer ← 1
+  FOR Index ← 1 TO 6
+    Tree[Index].LeftPointer ← Index + 1
+  NEXT Index
+  ENDFOR
+  Tree[N].LeftPointer ← NullPointer
+ENDPROCEDURE
+
