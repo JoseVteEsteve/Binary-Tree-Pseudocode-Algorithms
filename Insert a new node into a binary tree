@@ -1,0 +1,29 @@
+//this algorithm can be used to insert a new node into a binary tree
+
+PROCEDURE InsertNode(NewItem: DataType)
+  IF Freepointer < > NullPointer
+    THEN
+      NewNodePointer ← FreePointer
+      FreePointer ← Tree[FreePointer].LeftPointer
+      Tree[NewNodePointer].Data ← NewItem
+      Tree[NewNodePointer].LeftPointer ← NullPointer
+      Tree[NewNodePointer].RightPointer ← NullPointer
+      //check if empty tree
+      IF RootPointer = NullPointer
+        THEN //insert new node at root
+          RootPointer ← NewNodePointer
+        ELSE
+            ThisNodePointer ← RootPointer
+            WHILE ThisNodePointer < > NullPointer
+              PreviousNodePointer ← ThisNodePointer
+              IF Tree[ThisNodePointer].Data > NewItem
+                THEN //follow the left pointer
+                  TurnedLeft ← TRUE
+                  ThisNodePointer ← Tree[ThisNodePointer].LeftPointer
+                ELSE //follow the right pointer
+                  TurnedLeft ← FALSE
+                  ThisNodePointer ← Tree[ThisNodePointer].RightPointer
+              ENDIF
+      ENDIF
+  ENDIF
+ENDPROCEDURE
