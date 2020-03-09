@@ -1,23 +1,40 @@
 //this pseudocode algorithm is used to create a new binary tree 
 
 NullPointer should be set to -1 if using array element with index 0
+//a new constant NullPointer is initialised as 0
 CONSTANT NullPointer = 0
+
 //Declare record type to store data and pointers
 TYPE TreeNode
   DECLARE Data: <DataType>
   DECLARE LeftPointer: INTEGER
   DECLARE RightPointer: INTEGER
 ENDTYPE
+
+//a new pointer called RootPointer is declared as an integer
+//this pointer points to the first node of the tree
 DECLARE RootPointer: INTEGER
+
+//a new pointer called FreePointer is declared as an integer
+//this pointer points to the first node of the free list
 DECLARE FreePointer: INTEGER
+
+//an array of N elements of type TreeNode is declared
 DECLARE Tree: ARRAY[1: N] OF TreeNode
+
+//the procedure InitialiseTree() is declared 
 PROCEDURE InitialiseTree()
-  RootPointer ← NullPointer
-  FreePointer ← 1
-  FOR Index ← 1 TO 6
-    Tree[Index].LeftPointer ← Index + 1
+  RootPointer ← NullPointer //at the very beginning, the RootPointer is the NullPointer with the value 0
+  FreePointer ← 1 //at the very beginning, the FreePointer takes the value 1
+  
+  //with this code, the tree will be traversed
+  FOR Index ← 1 TO N 
+    Tree[Index].LeftPointer ← Index + 1 //the pointer value of each node will be the next node (this means that each node will point
+    //to the following element in sequence)
   NEXT Index
   ENDFOR
+  
+  //after the loop, the pointer of the last element (N) of the tree will point to NullPointer or 0
   Tree[N].LeftPointer ← NullPointer
 ENDPROCEDURE
 
