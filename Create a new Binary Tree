@@ -28,9 +28,9 @@ PROCEDURE InitialiseTree()
   FreePointer ← 1 //at the very beginning, the FreePointer takes the value 1
   
   //with this code, the tree will be traversed
-  FOR Index ← 1 TO N 
+  FOR Index ← 1 TO N - 1
     Tree[Index].LeftPointer ← Index + 1 //the pointer value of each node will be the next node (this means that each node will point
-    //to the following element in sequence)
+    //to the following element in sequence). This creates the free list.
   NEXT Index
   ENDFOR
   
