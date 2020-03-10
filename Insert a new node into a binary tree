@@ -1,28 +1,29 @@
 //this algorithm can be used to insert a new node into a binary tree
+CONSTANT NullPointer = 0
 
 PROCEDURE InsertNode(NewItem: DataType)
-  IF Freepointer < > NullPointer //this means that 
+  IF Freepointer < > NullPointer //this means that there is space in the array
     THEN
-      NewNodePointer ← FreePointer
+      NewNodePointer ← FreePointer //the pointer of the new node is the pointer of the first free node of the free list
       FreePointer ← Tree[FreePointer].LeftPointer
       Tree[NewNodePointer].Data ← NewItem
-      Tree[NewNodePointer].LeftPointer ← NullPointer
-      Tree[NewNodePointer].RightPointer ← NullPointer
-      //check if empty tree
-      IF RootPointer = NullPointer
+      Tree[NewNodePointer].LeftPointer ← NullPointer //this makes the left pointer points to 0 
+      Tree[NewNodePointer].RightPointer ← NullPointer //this makes the right pointer points to 0 
+      //check if the tree is empty
+      IF RootPointer = NullPointer //this means that the RootPointer is 0 so the tree is empty at the moment
         THEN //insert new node at root
-          RootPointer ← NewNodePointer
+          RootPointer ← NewNodePointer //the new node will be inserted at root
         ELSE
-            ThisNodePointer ← RootPointer
-            WHILE ThisNodePointer < > NullPointer
-              PreviousNodePointer ← ThisNodePointer
-              IF Tree[ThisNodePointer].Data > NewItem
-                THEN //follow the left pointer
-                  TurnedLeft ← TRUE
-                  ThisNodePointer ← Tree[ThisNodePointer].LeftPointer
+            ThisNodePointer ← RootPointer //this will make traversing the tree until it finds the first free node
+            WHILE ThisNodePointer < > NullPointer //this means that while there is not a leaf node (each leaf node points to 0)
+              PreviousNodePointer ← ThisNodePointer //the PreviousNodePointer is now the pointer of the new data to be inserted
+              IF Tree[ThisNodePointer].Data > NewItem //if the data of the actual node is greater than the new item to be inserted
+                THEN //follow the left pointer, this means that the new item will be inserted at the left (left child)
+                  TurnedLeft ← TRUE 
+                  ThisNodePointer ← Tree[ThisNodePointer].LeftPointer //now, the pointer will be the left pointer of the node
                 ELSE //follow the right pointer
-                  TurnedLeft ← FALSE
-                  ThisNodePointer ← Tree[ThisNodePointer].RightPointer
+                  TurnedLeft ← FALSE //this means that it will follow the right pointer
+                  ThisNodePointer ← Tree[ThisNodePointer].RightPointer //so, the pointer will be the right pointer of the node
               ENDIF
       ENDIF
   ENDIF
