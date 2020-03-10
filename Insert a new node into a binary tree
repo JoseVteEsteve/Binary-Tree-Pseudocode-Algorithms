@@ -1,7 +1,7 @@
 //this algorithm can be used to insert a new node into a binary tree
 
 PROCEDURE InsertNode(NewItem: DataType)
-  IF Freepointer < > NullPointer
+  IF Freepointer < > NullPointer //this means that 
     THEN
       NewNodePointer ← FreePointer
       FreePointer ← Tree[FreePointer].LeftPointer
